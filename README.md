@@ -1,2 +1,5 @@
 # plugin-DarknetAppServer
-Secure communication link to freenet mobile app
+Broadcasts Freenet node presence using a pin of self-signed certificate (SHA 256, SSL from bouncy castle) on local network. Another device (mobile) associated with this node will be able to recognize this pin and establish secure connection.
+
+The freenet node auto-synchs itself and downloads node-refs of darknet peers. The final decision to authorize a new peer is still manual for security reasons. 
+
