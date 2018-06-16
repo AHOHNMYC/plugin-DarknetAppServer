@@ -1,7 +1,9 @@
 package plugins.darknetappserver;
 
+import bcssl.BCModifiedSSL;
 import freenet.client.HighLevelSimpleClient;
 import freenet.clients.http.ToadletContainer;
+import freenet.config.Config;
 import freenet.config.InvalidConfigValueException;
 import freenet.config.NodeNeedRestartException;
 import freenet.config.SubConfig;
@@ -39,6 +41,7 @@ public class DarknetAppServerPlugin implements FredPlugin, FredPluginHTTP ,FredP
 
     @Override
     public void runPlugin(PluginRespirator pr) {
+        Config cfg = pr.getNode().config;
         Node node = pr.getNode();
         PooledExecutor executor = new PooledExecutor();
         //To Start DarknetAppServer
@@ -81,6 +84,7 @@ public class DarknetAppServerPlugin implements FredPlugin, FredPluginHTTP ,FredP
                 new  darknetAppAllowedHostsCallback());
         darknetAppConfig.register("bindTo", "0.0.0.0", configItemOrder++, true, true, "bindTo", "bindTo",
                 new darknetAppBindtoCallback());
+        BCModifiedSSL.init(darknetAppConfig);
     }
 
     @Override

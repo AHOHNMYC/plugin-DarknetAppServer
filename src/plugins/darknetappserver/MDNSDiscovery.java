@@ -6,8 +6,7 @@ package plugins.darknetappserver;
 
 import freenet.clients.http.PageNode;
 import freenet.config.Config;
-import freenet.config.SubConfig;
-import freenet.crypt.BCModifiedSSL;
+import bcssl.BCModifiedSSL;
 import freenet.crypt.ECDSA;
 import freenet.pluginmanager.*;
 import freenet.support.HTMLNode;

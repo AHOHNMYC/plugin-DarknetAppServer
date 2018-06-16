@@ -2,12 +2,11 @@ package plugins.darknetappserver.darknetapp;/*
  * A server to communicate with darknet app on mobiles on the lines of SimpleToadletServer
  */
 
-import com.sleepycat.je.tree.IN;
 import freenet.config.InvalidConfigValueException;
 import freenet.config.NodeNeedRestartException;
 import freenet.config.SubConfig;
-import freenet.crypt.BCModifiedSSL;
-import freenet.io.BCSSLNetworkInterface;
+import bcssl.BCModifiedSSL;
+import bcssl.BCSSLNetworkInterface;
 import freenet.io.NetworkInterface;
 import freenet.l10n.NodeL10n;
 import freenet.node.Node;
@@ -16,9 +15,6 @@ import freenet.support.Executor;
 import freenet.support.LogThresholdCallback;
 import freenet.support.Logger;
 import freenet.support.Logger.LogLevel;
-import freenet.support.api.BooleanCallback;
-import freenet.support.api.IntCallback;
-import freenet.support.api.StringCallback;
 import freenet.support.io.NativeThread;
 import java.io.File;
 import java.io.IOException;
