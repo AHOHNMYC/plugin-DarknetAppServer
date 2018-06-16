@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- ant build file for Freenet -->
+
+<project name="Freenet" default="dist" basedir=".">
+	<property name="freenet-ext.location" location="../fred-staging/lib/freenet/freenet-ext.jar"/>
+	<property name="freenet.location" location="../fred-staging/build/libs/freenet.jar"/>
+	<property name="svn.revision" value="@custom@"/>
+	<property name="source-version" value="1.5"/>
+	<property name="build" location="build/"/>
+	<property name="build-test" location="build-test/"/>
+	<property name="dist" location="dist/"/>
+	<property name="junit.location" value="/usr/share/java/junit.jar"/>
+	<available file="src/plugins/darknetappserver/Version.java" property="version.present"/>
+	<available file="${junit.location}" property="junit.present"/>
+
+	<target name="mkdir">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build-test}"/>
+		<mkdir dir="${dist}"/>
+		<echo message="Using ${freenet-ext.location} as freenet-ext.jar"/>
+		<echo message="Using ${freenet.location} as freenet.jar"/>
+	</target>
+
+	<target name="setver" if="version.present">
+		<!-- Update the Version file -->
+		<replace file="src/plugins/darknetappserver/Version.java">
+			<replacefilter token="@custom@" value="${svn.revision}"/>
+		</replace>
+	</target>
+	<!-- ================================================== -->
+	<target name="dist"
+			description="generate the distribution" >
+		<jar jarfile="${dist}/DarknetAppServer.jar" duplicate="fail">
+			<manifest>
+				<attribute name="Plugin-Main-Class" value="plugins.darknetappserver.DarknetAppServerPlugin"/>
+			</manifest>
+			<fileset dir="src/" casesensitive="no">
+				<include name="*.txt"/>
+			</fileset>
+			<fileset dir="${build}/"/>
+		</jar>
+	</target>
+
+	<!-- ================================================== -->
+	<target name="clean" description="Delete class files and docs dir.">
+		<delete dir="${build}"/>
+		<delete dir="${build-test}"/>
+		<delete dir="${dist}"/>
+	</target>
+</project>
