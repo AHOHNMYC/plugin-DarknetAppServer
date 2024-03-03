@@ -42,8 +42,7 @@
 		</javac>
 	</target>
 
-	<!-- Append txt file another way -->
-	<!-- target name="dist"
+	<target name="dist"
 			description="generate the distribution" >
 		<jar jarfile="${dist}/DarknetAppServer.jar" duplicate="fail">
 			<manifest>
@@ -51,12 +50,10 @@
 			</manifest>
 			<fileset dir="src/" casesensitive="no">
 				<include name="*.txt"/>
-				<include name="**/*.java"/>
-				<exclude name="**/*Test.java"/>
 			</fileset>
 			<fileset dir="${build}/"/>
 		</jar>
-	</target -->
+	</target>
 
 	<!-- ================================================== -->
 	<target name="clean" description="Delete class files and docs dir.">
