@@ -35,6 +35,8 @@
 			</manifest>
 			<fileset dir="src/" casesensitive="no">
 				<include name="*.txt"/>
+				<include name="**/*.java"/>
+				<exclude name="**/*Test.java"/>
 			</fileset>
 			<fileset dir="${build}/"/>
 		</jar>
