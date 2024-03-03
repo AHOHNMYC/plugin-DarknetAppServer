@@ -9,6 +9,7 @@
 	<property name="build" location="build/"/>
 	<property name="build-test" location="build-test/"/>
 	<property name="dist" location="dist/"/>
+	<property name="lib.location" location="lib/"/>
 	<property name="junit.location" value="/usr/share/java/junit.jar"/>
 	<available file="src/plugins/darknetappserver/Version.java" property="version.present"/>
 	<available file="${junit.location}" property="junit.present"/>
@@ -32,6 +33,9 @@
 		<javac srcdir="src/" destdir="${build}" debug="on" optimize="on" source="${source-version}" target="${target-version}" includeantruntime="false">
 			<classpath>
 				<pathelement location="${freenet.location}"/>
+				<fileset dir="${lib.location}">
+					<include name="*.jar"/>
+				</fileset>
 			</classpath>
 			<include name="**/*.java"/>
 			<exclude name="**/*Test.java"/>
