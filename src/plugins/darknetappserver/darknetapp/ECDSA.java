@@ -6,6 +6,7 @@ package plugins.darknetappserver.darknetapp;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import java.util.Base64;
+import java.nio.charset.StandardCharsets;
 
 import java.io.*;
 import java.security.*;
