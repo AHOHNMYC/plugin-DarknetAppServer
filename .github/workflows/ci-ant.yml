@@ -20,7 +20,7 @@ jobs:
     - name: Download freenet.jar
       run: |
         sudo chown -R runner ../..
-        mkdir -p ../fred/dist
+        mkdir -p ../fred/dist lib
         wget https://github.com/hyphanet/fred/releases/download/build01497/freenet.jar -qO ../fred/dist/freenet.jar
         wget https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.51/bcprov-jdk15on-1.51.jar -qO lib/bcprov-jdk15on-1.51.jar
     - name: Build with Ant
