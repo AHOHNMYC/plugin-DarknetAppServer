@@ -51,6 +51,7 @@ public final class DNSOutgoing extends DNSMessage {
             }
         }
 
+        @Override
         void writeBytes(byte data[]) {
             if (data != null) {
                 writeBytes(data, 0, data.length);
