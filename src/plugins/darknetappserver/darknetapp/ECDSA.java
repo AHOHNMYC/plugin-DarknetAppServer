@@ -5,8 +5,8 @@
 package plugins.darknetappserver.darknetapp;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import java.util.BASE64Decoder;
+import java.util.BASE64Encoder;
 
 import java.io.*;
 import java.security.*;
