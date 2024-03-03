@@ -113,8 +113,8 @@ public class ECDSA {
         String priv = prop.getProperty("DSAprivatekey");
         String publ = prop.getProperty("DSApublickey");
         Base64.Decoder decoder = Base64.getMimeDecoder();
-        byte[] pri = decoder.decodeBuffer(priv);
-        byte[] pub = decoder.decodeBuffer(publ);
+        byte[] pri = decoder.decode(priv);
+        byte[] pub = decoder.decode(publ);
         PKCS8EncodedKeySpec priKeySpec = new PKCS8EncodedKeySpec(pri);
         X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(pub);
         KeyFactory keyFactory = KeyFactory.getInstance("EC", "BC");
