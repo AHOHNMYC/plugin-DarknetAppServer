@@ -99,8 +99,8 @@ public class ECDSA {
         publickey = pair.getPublic();
         
         Base64.Encoder encoder = Base64.getMimeEncoder();
-        String pri = encoder.encode(new String(privatekey.getEncoded(), StandardCharsets.UTF_8));
-        String pub = encoder.encode(new String(publickey.getEncoded(), StandardCharsets.UTF_8));
+        String pri = new String(encoder.encode(privatekey.getEncoded(), StandardCharsets.UTF_8));
+        String pub = new String(encoder.encode(publickey.getEncoded(), StandardCharsets.UTF_8));
         prop.setProperty("DSAprivatekey",pri);
         prop.setProperty("DSApublickey",pub);
         generated = true;
@@ -112,19 +112,19 @@ public class ECDSA {
         String priv = prop.getProperty("DSAprivatekey");
         String publ = prop.getProperty("DSApublickey");
         Base64.Decoder decoder = Base64.getMimeDecoder();
-        byte[] pri= decoder.decodeBuffer(priv);
+        byte[] pri = decoder.decodeBuffer(priv);
         byte[] pub = decoder.decodeBuffer(publ);
         PKCS8EncodedKeySpec priKeySpec = new PKCS8EncodedKeySpec(pri);
         X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(pub);
         KeyFactory keyFactory = KeyFactory.getInstance("EC", "BC");
-        privatekey =keyFactory.generatePrivate(priKeySpec);
-        publickey =keyFactory.generatePublic(pubKeySpec);
+        privatekey = keyFactory.generatePrivate(priKeySpec);
+        publickey = keyFactory.generatePublic(pubKeySpec);
         generated = true;
     }
     public static boolean verify(String data,byte[] signature,byte[] publicKey) {
         boolean verify = false;
         try {
-            
+
             X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(publicKey);
             KeyFactory keyFactory = KeyFactory.getInstance("EC", "BC");
             PublicKey pubKey = keyFactory.generatePublic(pubKeySpec);
@@ -147,8 +147,5 @@ public class ECDSA {
             Logger.getLogger(ECDSA.class.getName()).log(Level.SEVERE, null, ex);
         }
         return verify;
-    }
-    
-
-    
+    }    
 }
