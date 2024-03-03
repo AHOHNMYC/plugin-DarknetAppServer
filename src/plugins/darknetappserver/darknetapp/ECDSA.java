@@ -100,8 +100,8 @@ public class ECDSA {
         publickey = pair.getPublic();
         
         Base64.Encoder encoder = Base64.getMimeEncoder();
-        String pri = new String(encoder.encode(privatekey.getEncoded(), StandardCharsets.UTF_8));
-        String pub = new String(encoder.encode(publickey.getEncoded(), StandardCharsets.UTF_8));
+        String pri = new String(encoder.encode(privatekey.getEncoded()), StandardCharsets.UTF_8);
+        String pub = new String(encoder.encode(publickey.getEncoded()), StandardCharsets.UTF_8);
         prop.setProperty("DSAprivatekey",pri);
         prop.setProperty("DSApublickey",pub);
         generated = true;
