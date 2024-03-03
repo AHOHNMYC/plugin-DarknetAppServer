@@ -5,8 +5,7 @@
 package plugins.darknetappserver.darknetapp;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import java.util.BASE64Decoder;
-import java.util.BASE64Encoder;
+import java.util.Base64;
 
 import java.io.*;
 import java.security.*;
@@ -99,7 +98,7 @@ public class ECDSA {
         privatekey = pair.getPrivate();
         publickey = pair.getPublic();
         
-        BASE64Encoder encoder = new BASE64Encoder();
+        Base64.Encoder encoder = Base64.getMimeEncoder();
         String pri = encoder.encode(privatekey.getEncoded());
         String pub = encoder.encode(publickey.getEncoded());
         prop.setProperty("DSAprivatekey",pri);
@@ -112,7 +111,7 @@ public class ECDSA {
 
         String priv = prop.getProperty("DSAprivatekey");
         String publ = prop.getProperty("DSApublickey");
-        BASE64Decoder decoder = new BASE64Decoder();
+        Base64.Decoder decoder = Base64.getMimeDecoder();
         byte[] pri= decoder.decodeBuffer(priv);
         byte[] pub = decoder.decodeBuffer(publ);
         PKCS8EncodedKeySpec priKeySpec = new PKCS8EncodedKeySpec(pri);
