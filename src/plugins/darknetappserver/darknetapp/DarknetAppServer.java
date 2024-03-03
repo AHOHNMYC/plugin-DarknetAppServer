@@ -22,7 +22,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.Arrays;
 import java.util.logging.Level;
-import org.tanukisoftware.wrapper.WrapperManager;
 
 
 /**
@@ -277,8 +276,6 @@ public class DarknetAppServer implements Runnable {
                 if(myThread == null) return;
         }
         Socket conn = networkInterface.accept();
-        if (WrapperManager.hasShutdownHookBeenTriggered())
-                return;
         if(conn == null)
             continue; // timeout
         if(logMINOR)
