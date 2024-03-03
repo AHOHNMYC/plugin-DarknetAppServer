@@ -20,7 +20,7 @@ jobs:
     - name: Download freenet.jar
       run: |
         sudo chown -R runner ../..
-        mkdir -p ../fred/dist build dist
+        mkdir -p ../fred/dist
         wget https://github.com/hyphanet/fred/releases/download/build01497/freenet.jar -qO ../fred/dist/freenet.jar
     - name: Build with Ant
       run: ant -noinput -buildfile build.xml

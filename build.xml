@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- ant build file for Freenet -->
 
-<project name="Freenet" default="dist" basedir=".">
+<project name="Freenet" default="compile" basedir=".">
 	<property name="freenet.location" location="../fred/dist/freenet.jar"/>
 	<property name="svn.revision" value="@custom@"/>
 	<property name="source-version" value="1.6"/>
